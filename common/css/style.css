@@ -1,0 +1,67 @@
+#app {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product {
+  position: relative;
+  border: 1px solid #ccc;
+  margin: 20px;
+  min-width: 190px;
+  min-height: 330px
+}
+
+.product-description {
+  padding: 10px;
+  position: absolute;
+  bottom: 0px;
+  width: calc(100% - 20px);
+}
+
+.product-description .short {
+    font-size: 12px;
+}
+
+.product-description .reviews {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.product-image {
+  max-width: 190px;
+}
+
+.remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: black;
+  background: #ccc;
+  text-decoration: none;
+  font-family: serif;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.error {
+  padding: 40px;
+  text-align: center;
+}
+
+#product-add-form {
+  border: 2px solid #ddd;
+  padding: 20px;
+}
+
+#product-add-form input {
+  display: block;
+  margin: 10px 0;
+  width: 200px
+}
