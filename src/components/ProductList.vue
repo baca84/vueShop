@@ -6,15 +6,22 @@ export default {
     data () {
         return {
             products: [],
-			title: ''
+			categories: []
         }
     },
 	methods: {
 		getProducts: function() {
 			var self = this;
-			request.get('/data.json')
+			request.get('http://localhost:3000/api/products')
 				.end(function(err, res){
 					self.products = res.body;
+				});
+		},
+		getCategories: function() {
+			var self = this;
+			request.get('http://localhost:3000/api/categories')
+				.end(function(err, res){
+					self.categories = res.body;
 				});
 		}
 	},
