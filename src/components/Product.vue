@@ -11,14 +11,16 @@ export default {
 </script>
 
 <template>
-	<div class="product">
-        <img :src="product.image" :alt="product.name" class="product-image">
-        <div class="product-description">
-          <h5>{{ product.title }}</h5>
-          <span>€{{ product.price }}</span>
-  			<span class="reviews">
-				{{getReviews}}
-  			</span>
+	<div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img :src="product.image" :alt="product.name" class="img-responsive">
+            <div class="caption">
+                <h3>{{ product.title }}</h3>
+                <h4>€{{ product.price }}</h4>
+                <p>
+                    {{getReviews}}
+                </p>
+            </div>
         </div>
     </div>
 </template>

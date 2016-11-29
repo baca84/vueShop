@@ -2,13 +2,13 @@
 import request from 'superagent';
 
 export default {
-    data () {
-        return {
+	data () {
+		return {
 			categories: []
-        }
-    },
-	methods: {
+		}
+	},
 
+	methods: {
 		getCategories: function() {
 			var self = this;
 			request.get('http://localhost:3000/api/categories')
@@ -25,13 +25,15 @@ export default {
 
 <template>
 	<div>
-		<div class="pure-menu pure-menu-horizontal">
-		    <ul class="pure-menu-list">
-		        <li class="pure-menu-item" v-for="category in categories">
-					<a href="#" class="pure-menu-link">{{category.name}}</a>
-				</li>
-
-		    </ul>
-		</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li v-for="category in categories">
+						<a href="#">{{category.name}}</a>
+					</li>
+				</ul>
+				
+			</div>
+		</nav>
 	</div>
 </template>
