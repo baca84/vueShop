@@ -1,5 +1,6 @@
 <script>
 import request from 'superagent';
+import store from '../vuex/store'
 import Product from './Product.vue';
 import AppMenu from './AppMenu.vue';
 
@@ -9,24 +10,25 @@ export default {
             searchString: "",
             products: [],
 			categories: [],
-
         }
     },
 	methods: {
-		getProducts: function() {
+		fetchProducts: function() {
 			var self = this;
 			request.get('http://localhost:3000/api/products')
 				.end(function(err, res){
-					self.products = res.body;
+					self.$store.dispatch('updateProducts', res.body)
+					//self.products = res.body;
 				});
 		},
-		getCategories: function() {
-			var self = this;
-			request.get('http://localhost:3000/api/categories')
-				.end(function(err, res){
-					self.categories = res.body;
-				});
-		}
+		// fetchCategories: function() {
+		// 	var self = this;
+		// 	request.get('http://localhost:3000/api/categories')
+		// 		.end(function(err, res){
+		// 			self.$store.dispatch('updateCategories', res.body)
+		// 		});
+		// },
+		
 	},
     computed: {
 		productsFiltered: function () {
@@ -45,12 +47,20 @@ export default {
 				}
 			})
 
-			// Return an array with the filtered data.
 			return products_array;
-		}
+		},
+		products() {
+            return this.$store.getters.getProducts
+        },
+		// categories() {
+        //     return this.$store.getters.getCategories
+        // }
 	},
 	created: function(){
-		this.getProducts();
+		this.fetchProducts();
+
+		setInterval(this.fetchProducts, 30000);
+
 	},
 	components: {
         Product,
@@ -61,14 +71,21 @@ export default {
 
 <template>
 	<div>
-        <app-menu></app-menu>
-        <div class="form-group">
-            <input class="form-control" placeholder="Search for product" v-model="searchString">
-        </div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<app-menu></app-menu>
+				<div class="navbar-form navbar-left">
+					<div class="form-group">
+			            <input class="form-control" placeholder="Search for product" v-model="searchString">
+			        </div>
+				</div>
+			</div>
+		</nav>
+
 		<div class="row">
 			<product v-for="product in productsFiltered" :product="product"></product>
-			<div v-if="products.length == 0" class="error">
-				Sorry, but this list is empty at the moment :(
+			<div v-if="products.length == 0" class="alert alert-info">
+				Sorry, but this list is empty at the moment
 			</div>
 		</div>
 	</div>
