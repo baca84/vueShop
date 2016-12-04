@@ -19,6 +19,9 @@
 				<p>{{product.price}}</p>
 			</div>
 		</div>
+		<div class="row">
+			{{ product.fullDescription}}
+		</div>
 
 	</div>
 </div>
