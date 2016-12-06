@@ -8,16 +8,18 @@
 		</a>
 		<div class="caption">
 			<h3>
-					<a :href="'#/product/'+product.id">
-						{{ product.title }}
-					</a>
-				</h3>
-			<h4>{{ product.price }} Euro</h4>
-			<p>
-				{{ product.shortDescription}}
-			</p>
+				<a :href="'#/product/'+product.id">
+					{{ product.title }}
+				</a>
+			</h3>
+			<h4>{{ product.price }} €</h4>
 			<p>
 				{{getReviews}}
+			</p>
+			<p>
+				<a :href="'#/product/'+product.id" class="btn btn-default">
+					More
+				</a>
 			</p>
 		</div>
 	</div>
