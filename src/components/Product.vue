@@ -3,23 +3,23 @@
 <template>
 <div class="col-sm-6 col-md-4" v-if="category == 0 || product.category == category">
 	<div class="thumbnail">
-		<a :href="'#/product/'+product.id">
+		<router-link :to="{ path: 'product/'+product.id}">
 			<img :src="product.image" :alt="product.name" class="img-responsive">
-		</a>
+		</router-link>
 		<div class="caption">
 			<h3>
-				<a :href="'#/product/'+product.id">
+				<router-link :to="{ path: 'product/'+product.id}">
 					{{ product.title }}
-				</a>
+				</router-link>
 			</h3>
 			<h4>{{ product.price }} €</h4>
 			<p>
 				{{getReviews}}
 			</p>
 			<p>
-				<a :href="'#/product/'+product.id" class="btn btn-default">
+				<router-link :to="{ path: 'product/'+product.id}" class="btn btn-default">
 					More
-				</a>
+				</router-link>
 			</p>
 		</div>
 	</div>

@@ -1,8 +1,11 @@
 <template>
 <div>
 	<ul class="nav navbar-nav">
+		<li>
+			<a href="/">Home</a>
+		</li>
 		<li v-for="category in categories">
-			<a href="#" v-on:click="filterByCategory(category.id)">{{category.name}}</a>
+			<a href="#" v-on:click="filterByCategory(category.id)" >{{category.name}}</a>
 		</li>
 	</ul>
 </div>
